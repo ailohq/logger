@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/ailohq/logger/compare/v2.0.0...v2.1.0) (2021-04-08)
+
+
+### Features
+
+* Extract `LoggerFactoryInterface` from `LoggerFactory`; add `TestLoggerFactory` ([6ea37c9](https://github.com/ailohq/logger/commit/6ea37c91eddf12ff0a55088a66a1f1d06f3f486a))
+
 ## [2.0.0](https://github.com/ailohq/logger/compare/v1.0.1...v2.0.0) (2021-04-08)
 
 
