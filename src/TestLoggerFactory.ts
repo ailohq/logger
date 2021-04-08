@@ -1,27 +1,53 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import stripColor from "strip-color";
 import { LoggerFactoryInterface, LogLevel } from "./LoggerFactoryInterface";
 
 class TestLogger {
-  logs: [LogLevel, string][] = [];
+  _logs: [LogLevel, string][] = [];
 
+  stripColor: boolean;
+
+  constructor({
+    stripColor: stripColorOption = true,
+  }: {
+    /**
+     * Strip colors from messages?
+     * @default true
+     */
+    stripColor?: boolean;
+  } = {}) {
+    this.stripColor = stripColorOption;
+  }
+
+  get logs(): [LogLevel, string][] {
+    return this._logs.map(([level, msg]) => [
+      level,
+      this.stripColor ? stripColor(msg) : msg,
+    ]);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error(message: any) {
-    this.logs.push(["error", message]);
+    this._logs.push(["error", message]);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   warn(message: any) {
-    this.logs.push(["warn", message]);
+    this._logs.push(["warn", message]);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   info(message: any) {
-    this.logs.push(["info", message]);
+    this._logs.push(["info", message]);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   debug(message: any) {
-    this.logs.push(["debug", message]);
+    this._logs.push(["debug", message]);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   silly(message: any) {
-    this.logs.push(["silly", message]);
+    this._logs.push(["silly", message]);
   }
 }
 
