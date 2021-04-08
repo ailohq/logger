@@ -17,10 +17,10 @@ export const config = {
 };
 
 // src/common/logger.ts
-import { createLogger } from "@ailo/logger";
+import { LoggerFactory } from "@ailo/logger";
 import { config } from "./config";
 
-export const { instance: logger, logAs } = createLogger({
+export const { instance: logger, logAs } = new LoggerFactory({
   minLevel: config.logLevel,
 });
 ```

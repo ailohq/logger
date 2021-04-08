@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { execSync } from "child_process";
-import { createLogger, LoggerFactory } from "./createLogger";
+import { LoggerFactory } from "./LoggerFactory";
 
 const testLogFile = execSync("mktemp").toString();
 beforeEach(() => {
@@ -9,7 +9,7 @@ beforeEach(() => {
 
 let logger: LoggerFactory;
 beforeEach(() => {
-  logger = createLogger({
+  logger = new LoggerFactory({
     transport: {
       type: "file",
       filename: testLogFile,
@@ -30,7 +30,7 @@ function onLoggerFinish(fn: () => void): Promise<void> {
   });
 }
 
-describe("createLogger", () => {
+describe("LoggerFactory", () => {
   // eslint-disable-next-line jest/expect-expect
   it("creates a logger that can be closed", () => {
     logger.instance.end();
