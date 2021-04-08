@@ -11,8 +11,10 @@ describe("TestLoggerFactory", () => {
     b.info("3");
 
     expect(factory.loggers).toEqual({ a, b });
-    expect(a.logs.error).toEqual(["1"]);
-    expect(a.logs.info).toEqual(["2"]);
-    expect(b.logs.info).toEqual(["3"]);
+    expect(a.logs).toEqual([
+      ["error", "1"],
+      ["info", "2"],
+    ]);
+    expect(b.logs).toEqual([["info", "3"]]);
   });
 });

@@ -2,37 +2,26 @@
 import { LoggerFactoryInterface, LogLevel } from "./LoggerFactoryInterface";
 
 class TestLogger {
-  logs: { [key in LogLevel | "log"]: string[] } = {
-    error: [],
-    warn: [],
-    info: [],
-    debug: [],
-    silly: [],
-    log: [],
-  };
+  logs: [LogLevel, string][] = [];
 
   error(message: any) {
-    this.logs.error.push(message);
+    this.logs.push(["error", message]);
   }
 
   warn(message: any) {
-    this.logs.warn.push(message);
+    this.logs.push(["warn", message]);
   }
 
   info(message: any) {
-    this.logs.info.push(message);
+    this.logs.push(["info", message]);
   }
 
   debug(message: any) {
-    this.logs.debug.push(message);
+    this.logs.push(["debug", message]);
   }
 
   silly(message: any) {
-    this.logs.silly.push(message);
-  }
-
-  log(message: any) {
-    this.logs.log.push(message);
+    this.logs.push(["silly", message]);
   }
 }
 
