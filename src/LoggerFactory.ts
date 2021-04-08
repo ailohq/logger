@@ -1,29 +1,10 @@
-import winston from "winston";
+import winston, { Logger } from "winston";
+import {
+  LoggerFactoryInterface,
+  LoggerFactoryOptions,
+} from "./LoggerFactoryInterface";
 
-export type LogLevel = "error" | "warn" | "info" | "debug" | "silly";
-
-export type LoggerTransport =
-  | { type: "console" }
-  | { type: "file"; filename: string };
-
-export interface LoggerFactoryOptions {
-  /**
-   * Log only if `message.level` is less than or equal to this level.
-   *
-   * If given `null`, will disable all the logs.
-   *
-   * @default "info"
-   */
-  minLevel?: LogLevel | null;
-  /**
-   * @default { type: "console" }
-   */
-  transport?: LoggerTransport;
-}
-
-export type Logger = Pick<winston.Logger, LogLevel | "log">;
-
-export class LoggerFactory {
+export class LoggerFactory implements LoggerFactoryInterface {
   private winstonLogger: winston.Logger;
 
   constructor({
