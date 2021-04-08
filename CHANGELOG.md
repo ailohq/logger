@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/ailohq/logger/compare/v2.1.1...v2.1.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* Strip colors from test logger messages ([d251857](https://github.com/ailohq/logger/commit/d2518575d98b510c5acceae379f91e04f9a9baab))
+
 ### [2.1.1](https://github.com/ailohq/logger/compare/v2.1.0...v2.1.1) (2021-04-08)
 
 
