@@ -4,12 +4,18 @@ import {
   LoggerFactoryOptions,
 } from "./LoggerFactoryInterface";
 
+const isREPL =
+  process.execArgv.includes("-i") ||
+  process.argv.length === 0 ||
+  process.argv.length === 1;
+
 export class LoggerFactory implements LoggerFactoryInterface {
   private winstonLogger: winston.Logger;
 
   constructor({
     minLevel = "info",
     transport = { type: "console" },
+    handleExceptions = !isREPL,
   }: LoggerFactoryOptions = {}) {
     const transports =
       transport.type === "file"
@@ -18,7 +24,7 @@ export class LoggerFactory implements LoggerFactoryInterface {
               filename: transport.filename,
             }),
           ]
-        : [new winston.transports.Console({ handleExceptions: true })];
+        : [new winston.transports.Console({ handleExceptions })];
 
     this.winstonLogger = winston.createLogger({
       level: minLevel === null ? "none" : minLevel,
@@ -41,12 +47,14 @@ export class LoggerFactory implements LoggerFactoryInterface {
             : `${timestamp} ${level}: ${message}`
         )
       ),
-      exceptionHandlers: [
-        new winston.transports.File({
-          filename: "/dev/stderr",
-          level: "silly",
-        }),
-      ],
+      exceptionHandlers: handleExceptions
+        ? [
+            new winston.transports.File({
+              filename: "/dev/stderr",
+              level: "silly",
+            }),
+          ]
+        : [],
     });
   }
 

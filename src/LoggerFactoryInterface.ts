@@ -26,6 +26,10 @@ export interface LoggerFactoryOptions {
    * @default { type: "console" }
    */
   transport?: LoggerTransport;
+  /**
+   * @default true if not in REPL
+   */
+  handleExceptions?: boolean;
 }
 
 export type Logger = { [key in LogLevel]: LogMethod };
