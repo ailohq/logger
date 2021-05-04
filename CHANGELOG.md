@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/ailohq/logger/compare/v2.1.2...v2.1.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* Don't handle exceptions when in REPL ([fdae0d4](https://github.com/ailohq/logger/commit/fdae0d4dbf6afd9c02577b0d81a2d821c44f8b95))
+
 ### [2.1.2](https://github.com/ailohq/logger/compare/v2.1.1...v2.1.2) (2021-04-08)
 
 
