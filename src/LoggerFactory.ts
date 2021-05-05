@@ -4,10 +4,8 @@ import {
   LoggerFactoryOptions,
 } from "./LoggerFactoryInterface";
 
-const isREPL =
-  process.execArgv.includes("-i") ||
-  process.argv.length === 0 ||
-  process.argv.length === 1;
+// eslint-disable-next-line
+const isREPL = !!require("repl").repl;
 
 export class LoggerFactory implements LoggerFactoryInterface {
   private winstonLogger: winston.Logger;
@@ -54,7 +52,7 @@ export class LoggerFactory implements LoggerFactoryInterface {
               level: "silly",
             }),
           ]
-        : [],
+        : undefined,
     });
   }
 
