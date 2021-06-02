@@ -1,13 +1,17 @@
-import winston, { Logger } from "winston";
+import winston from "winston";
 import {
+  Logger,
   LoggerFactoryInterface,
   LoggerFactoryOptions,
+  LogLevel,
 } from "./LoggerFactoryInterface";
 
 // eslint-disable-next-line
 const isREPL = !!require("repl").repl;
 
 export class LoggerFactory implements LoggerFactoryInterface {
+  readonly minLevel?: LogLevel;
+
   private winstonLogger: winston.Logger;
 
   constructor({
@@ -15,6 +19,8 @@ export class LoggerFactory implements LoggerFactoryInterface {
     transport = { type: "console" },
     handleExceptions = !isREPL,
   }: LoggerFactoryOptions = {}) {
+    this.minLevel = minLevel ?? undefined;
+
     const transports =
       transport.type === "file"
         ? [
@@ -25,7 +31,7 @@ export class LoggerFactory implements LoggerFactoryInterface {
         : [new winston.transports.Console({ handleExceptions })];
 
     this.winstonLogger = winston.createLogger({
-      level: minLevel === null ? "none" : minLevel,
+      level: this.minLevel ?? "none",
       levels: {
         none: 0,
         error: 1,
@@ -61,6 +67,9 @@ export class LoggerFactory implements LoggerFactoryInterface {
   }
 
   logAs(name: string): Logger {
-    return this.winstonLogger.child({ name });
+    const logger = this.winstonLogger.child({ name }) as Logger;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (logger as any).minLevel = this.minLevel;
+    return logger;
   }
 }

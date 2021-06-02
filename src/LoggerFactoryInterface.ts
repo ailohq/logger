@@ -32,7 +32,9 @@ export interface LoggerFactoryOptions {
   handleExceptions?: boolean;
 }
 
-export type Logger = { [key in LogLevel]: LogMethod };
+export type Logger = { [key in LogLevel]: LogMethod } & {
+  readonly minLevel?: LogLevel;
+};
 
 export interface LoggerFactoryInterface {
   logAs(name: string): Logger;
