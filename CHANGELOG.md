@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/ailohq/logger/compare/v2.1.4...v2.2.0) (2021-06-02)
+
+
+### Features
+
+* Add `readonly minLevel?: LogLevel` property to logger factory and logger instances ([3a976b5](https://github.com/ailohq/logger/commit/3a976b5564a82c8a6844161c3277a36adbfe370c))
+
 ### [2.1.4](https://github.com/ailohq/logger/compare/v2.1.3...v2.1.4) (2021-05-05)
 
 ### [2.1.3](https://github.com/ailohq/logger/compare/v2.1.2...v2.1.3) (2021-05-04)
