@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/ailohq/logger/compare/v2.2.0...v2.3.0) (2022-05-20)
+
+
+### Features
+
+* change debug log colour to cyan for readability ([79f8e64](https://github.com/ailohq/logger/commit/79f8e64301743b8e38d32062f8fc7f1791b86440))
+
 ## [2.2.0](https://github.com/ailohq/logger/compare/v2.1.4...v2.2.0) (2021-06-02)
 
 
