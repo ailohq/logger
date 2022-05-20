@@ -42,7 +42,7 @@ export class LoggerFactory implements LoggerFactoryInterface {
       },
       transports,
       format: winston.format.combine(
-        winston.format.colorize({ all: true }),
+        winston.format.colorize({ all: true, colors: { debug: "cyan" } }),
         winston.format.splat(),
         winston.format.timestamp(),
         winston.format.printf(({ timestamp, level, message, name }) =>
